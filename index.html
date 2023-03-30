@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+</head>
+
+
+<body>
+
+    <div class="container">
+        <div class="menu-toggle" id="menu-toggle"><span class="material-symbols-outlined">
+                menu
+            </span>
+        </div>
+        <aside class="sidebar">
+            <div class="sidebar-heading">
+                <h1>Finance List</h1>
+                <span class="user-icon" id="user-icon">--</span>
+            </div>
+            <ul class="menu">
+                <li class='menu__item' data-page="1"><span class="material-symbols-outlined">
+                        home
+                    </span>Dashboard</li>
+                <li class='menu__item' data-page="2"><span class="material-symbols-outlined">
+                        add_circle
+                    </span>Add New Expense</li>
+                <li class='menu__item' data-page="3"><span class="material-symbols-outlined">
+                        add_circle
+                    </span>Add New Income</li>
+                <li class='menu__item' data-page="4"><span class="material-symbols-outlined">
+                        backup_table
+                    </span>Your Categories</li>
+                <li class='menu__item' data-page="5"><span class="material-symbols-outlined">
+                        group
+                    </span>Users</li>
+                <li class='menu__item' data-page="5"><span class="material-symbols-outlined">
+                        calendar_month
+                    </span>Calendar</li>
+                <li class='menu__item' data-page="6"><span class="material-symbols-outlined">
+                        work_history
+                    </span>History</li>
+                <li class='menu__item' data-page="7"><span class="material-symbols-outlined">
+                        settings
+                    </span>Settings</li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div class="page visible" data-content-page="1">
+
+                <div class="title-wrapper">
+                    <h2>Your Finances for: <span id="month-finance"></span></h2>
+                    <div class="nav-arrows">
+                        <span class="material-symbols-outlined" id="prev">
+                            arrow_back_ios
+                        </span>
+                        <span class="material-symbols-outlined inactive" id="next">
+                            arrow_forward_ios
+                        </span>
+                    </div>
+                </div>
+                <div style="width: 100%;display: flex;">
+                    <div class="top-wrapper">
+                        <div class="top-content">
+                        </div>
+                        <div class="wrapper-stats">
+
+                            <div class="canvas-wrapper">
+                                <canvas id="chart-expenses"></canvas>
+                            </div>
+                            <div class="canvas-wrapper">
+
+                                <canvas id="chart-income"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side-content">
+                    </div>
+
+                </div>
+                <div class="bottom-content" id="category-summary">
+
+                    <h1>Finance History</h1>
+                </div>
+
+            </div>
+            <div class="page" data-content-page="2">
+                <div class="bottom-content">
+                    <h1>Add your new expense</h1>
+                    <form>
+                        <select type="text" placeholder="Category" id="category">
+
+                        </select>
+                        <input type="number" placeholder="Amount" id="amount" required />
+                        <input type="submit" id="category-submit" placeholder="Submit" />
+                    </form>
+                    <div class="canvas-wrapper">
+                        <canvas></canvas>
+
+                    </div>
+                </div>
+            </div>
+            <div class="page" data-content-page="3">
+                <div class="bottom-content">
+                    <form id="income-form">
+                        <h1>Add your new category income</h1>
+                        <input type="text" placeholder="Income Category" id="add-income-category" required />
+                        <input type="submit" id="add-income-category-submit" placeholder="Submit" />
+                    </form>
+                    <form id="">
+                        <h1>Add your new income</h1>
+                        <select type="text" placeholder="Income" id="income-category">
+                            <option>Work</option>
+                            <option>Permament Contracts</option>
+                            <option>Temporary Contracts</option>
+                        </select>
+                        <input type="number" placeholder="Income Amount" id="income-amount" required />
+                        <input type="submit" id="income-submit" placeholder="Submit" />
+                    </form>
+                </div>
+            </div>
+            <div class="page" data-content-page="4">
+                <div class="bottom-content">
+                    <h1>Add your new category</h1>
+                    <form id="category-form">
+                        <input type="text" placeholder="Type category name" id="new-category" required minlength="3" />
+                        <input type="submit" id="category-new-submit" placeholder="Add" />
+                    </form>
+                    <div>
+                        <label for="color">Choose Icon Colour:</label>
+                        <input type="color" id="color" value="#dddddd" />
+                    </div>
+                    <div class="icon-wrapper">
+                        Choose Icon:
+                        <span class="material-symbols-outlined" id="default-icon">payments</span>
+                        <span class="material-symbols-outlined">electric_meter</span>
+                        <span class="material-symbols-outlined">sports_gymnastics</span>
+                        <span class="material-symbols-outlined">fastfood</span>
+                        <span class="material-symbols-outlined">subscriptions</span>
+                        <span class="material-symbols-outlined">redeem</span>
+                        <span class="material-symbols-outlined">local_taxi</span>
+                        <span class="material-symbols-outlined">home</span>
+                        <span class="material-symbols-outlined">savings</span>
+                    </div>
+                </div>
+            </div>
+            <div class="page" data-content-page="5">
+                <div class="bottom-content">
+                    <h1>Add new user</h1>
+                    <form id="user-form">
+                        <input type="text" placeholder="User Name" id="user-input" required />
+                        <input type="submit" id="user-submit" placeholder=" Submit " />
+                    </form>
+                </div>
+            </div>
+            <div class="page" data-content-page="6">
+                <div class=" top-content ">
+
+                </div>
+            </div>
+            <div class="page" data-content-page="7">
+                <div class=" top-content ">
+                    <div class="bottom-content">
+                        <h1>Choose current user </h1>
+                        <form id="user-form">
+                            <select type="text" placeholder="Users" id="user-settings-select">
+
+                            </select>
+                            <button type="submit" id="save-current-user-submit">Save Current User</button>
+                        </form>
+                        <h1>Choose currency</h1>
+                        <form id="user-form">
+                            <select type="text" placeholder="Users" id="user-settings-select">
+
+                            </select>
+                            <button type="submit" id="save-settings-submit">Save Settings</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src=" https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.umd.js"
+        integrity="sha512-B51MzT4ksAo6Y0TcUpmvZnchoPYfIcHadIaFqV5OR5JAh6dneYAeYT1xIlaNHhhFAALd5FLDTWNt/fkxhwE/oQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        dayjs().format()
+    </script>
+    <script>
+
+        'use strict'
+        const expensesRaw = localStorage.getItem('Expenses');
+        const settingsRaw = localStorage.getItem('Settings');
+        const incomeRaw = localStorage.getItem('Income');
+        let expenses = JSON.parse(expensesRaw);
+        const expensesData = JSON.parse(expensesRaw);
+        let settings = JSON.parse(settingsRaw);
+        let incomeData = JSON.parse(incomeRaw);
+
+        const composeInitialObject = (acc, current) => {
+            const category = current.category;
+            if (acc[category] == undefined) {
+                acc[category] = {
+                    amount: Number(current.amount)
+                };
+            }
+            else {
+                acc[category].amount += Number(current.amount)
+            }
+            return acc;
+        }
+
+        const expensesChartXYZ = expensesData.reduce(composeInitialObject, {})
+        const incomeChartXYZ = incomeData.reduce(composeInitialObject, {})
+
+        const addNameAndColor = (source, settingsXYZ) => {
+            const result = { ...source };
+
+            for (const [categoryId, chartData] of Object.entries(source)) {
+                let dataToAdd = {}
+
+                for (const category of settingsXYZ.categories) {
+                    if (categoryId === category.id) {
+
+                        dataToAdd = {
+                            name: category.name,
+                            color: (category.type === "income") ? `#${(Math.floor(Math.random() * 16777215)).toString(16)}` : category.color
+                        };
+                        break;
+                    }
+                }
+
+                result[categoryId] = { ...chartData, ...dataToAdd }
+                // Object.assign(chartData, dataToAdd)
+            }
+            return result;
+        }
+
+        const withNameAndColor = addNameAndColor(expensesChartXYZ, settings);
+        const incomeWithNameAndColor = addNameAndColor(incomeChartXYZ, settings);
+
+        const composeChartData = (source) => {
+            const amounts = [];
+            const colours = [];
+            const labels = [];
+            for (const item in source) {
+                amounts.push(source[item].amount);
+                colours.push(source[item].color)
+                labels.push(source[item].name)
+            }
+            return {
+                amounts,
+                colours,
+                labels
+            }
+        }
+        const chartData = composeChartData(withNameAndColor);
+        const chartIncomeData = composeChartData(incomeWithNameAndColor);
+
+        const chartExpenseData = {
+            labels: chartData.labels,
+            datasets: [{
+                label: 'My First Dataset',
+                data: chartData.amounts,
+                backgroundColor: chartData.colours,
+                hoverOffset: 4
+            }]
+        };
+
+        const chartIncomeDataObj = {
+            labels: chartIncomeData.labels,
+            datasets: [{
+                label: 'My First Dataset',
+                data: chartIncomeData.amounts,
+                backgroundColor: chartIncomeData.colours,
+                hoverOffset: 4
+            }]
+        };
+
+        document.addEventListener('expense', (e) => {
+            const expensesRaw = localStorage.getItem('Expenses');
+            const settingsRaw = localStorage.getItem('Settings');
+
+            const expensesData = JSON.parse(expensesRaw);
+            let settings = JSON.parse(settingsRaw);
+
+            const expensesChartXYZ = expensesData.reduce(composeInitialObject, {});
+
+            const withNameAndColor = addNameAndColor(expensesChartXYZ, settings);
+            const newData = composeChartData(withNameAndColor);
+            const chartExpenseData = {
+                labels: newData.labels,
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: newData.amounts,
+                    backgroundColor: newData.colours,
+                    hoverOffset: 4
+                }]
+            };
+
+
+            chartExpenses.data = chartExpenseData;
+            chartExpenses.update();
+
+        })
+
+
+        document.addEventListener('income', (e) => {
+            const incomeRaw = localStorage.getItem('Income');
+            const settingsRaw = localStorage.getItem('Settings');
+
+            const incomeData = JSON.parse(incomeRaw);
+            let settings = JSON.parse(settingsRaw);
+
+            const incomeChartXYZ = incomeData.reduce(composeInitialObject, {});
+
+            const withNameAndColor = addNameAndColor(incomeChartXYZ, settings);
+            const newData = composeChartData(withNameAndColor);
+            const chartIncomeData = {
+                labels: newData.labels,
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: newData.amounts,
+                    backgroundColor: newData.colours,
+                    hoverOffset: 4
+                }]
+            };
+
+
+            chartIncome.data = chartIncomeData;
+            chartIncome.update();
+
+        })
+
+        const chartExpenses = new Chart(document.querySelector('#chart-expenses'), {
+            type: 'pie',
+            data: chartExpenseData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Your Expenses'
+                    }
+                }
+            },
+        })
+
+        const chartIncome = new Chart(document.querySelector('#chart-income'), {
+            type: 'pie',
+            data: chartIncomeDataObj,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Your Income'
+                    }
+                }
+            },
+        })
+
+
+    </script>
+    <script src="script.js "></script>
+
+</body>
+
+</html>
